@@ -1,7 +1,6 @@
 package com.srvraj311;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +11,8 @@ public class SquareServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int out = (int) (req.getAttribute("k"));
+		int out = Integer.parseInt(req.getParameter("k"));
+		// data is recieved using query params
 		out = out * out;
 		resp.getWriter().println("Square is : " + out);
 	}
