@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class AddServlet extends HttpServlet {
 
@@ -28,11 +29,15 @@ public class AddServlet extends HttpServlet {
 		// in this case the url willl be abstracted from user
 
 		// 2. Redirect
-		res.sendRedirect("sq?k=" + k);
+		// res.sendRedirect("sq?k=" + k);
 		// data is being passed by query params
 
 		// Send data between servlets
 		// 1. Session Management
+
+		HttpSession session = req.getSession();
+		session.setAttribute("k", k);
+		res.sendRedirect("sq");
 	}
 
 }
