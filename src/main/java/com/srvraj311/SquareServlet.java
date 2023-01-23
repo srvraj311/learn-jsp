@@ -3,32 +3,18 @@ package com.srvraj311;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/sq")
 public class SquareServlet extends HttpServlet {
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// int out = Integer.parseInt(req.getParameter("k"));
-		// HttpSession session = req.getSession();
-		// int out = (int) session.getAttribute("k");
-		// data is recieved using query params
+	protected void doGet(HttpServletRequest req, javax.servlet.http.HttpServletResponse resp)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
 
-		// Recieving data using Cookie
-		int out = 0;
-		Cookie[] cookies = req.getCookies();
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("k")) {
-				out = Integer.parseInt(cookie.getValue());
-				out = out * out;
-			}
-		}
-
-		resp.getWriter().println("Square is : " + out);
-		// Also we can delete the value once set but only if it exists
-		// session.removeAttribute("k");
 	}
 }
